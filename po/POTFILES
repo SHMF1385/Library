@@ -1,0 +1,6 @@
+data/ir.hajmousa.Library.desktop.in
+data/ir.hajmousa.Library.appdata.xml.in
+data/ir.hajmousa.Library.gschema.xml
+src/main.py
+src/window.py
+src/window.ui

@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2022 سید حسین
+# Copyright 2022 Seyed Hosein Mousavi Fard
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,7 +28,6 @@ from .window import LibraryWindow
 
 
 class LibraryApplication(Adw.Application):
-    """The main application singleton class."""
 
     def __init__(self):
         super().__init__(application_id='ir.hajmousa.Library',
@@ -38,40 +37,26 @@ class LibraryApplication(Adw.Application):
         self.create_action('preferences', self.on_preferences_action)
 
     def do_activate(self):
-        """Called when the application is activated.
-
-        We raise the application's main window, creating it if
-        necessary.
-        """
         win = self.props.active_window
         if not win:
             win = LibraryWindow(application=self)
         win.present()
 
     def on_about_action(self, widget, _):
-        """Callback for the app.about action."""
         about = Adw.AboutWindow(transient_for=self.props.active_window,
-                                application_name='library',
+                                application_name='Library',
                                 application_icon='ir.hajmousa.Library',
-                                developer_name='سید حسین',
+                                developer_name='Seyyed Hosein Mousavi Fard',
                                 version='0.1.0',
-                                developers=['سید حسین'],
-                                copyright='© 2022 سید حسین')
+                                developers=['Seyyed Hosein Mousavi Fard'],
+                                copyright='© 2022 Seyyed Hosein Mousavi Fard',
+                                license_type=Gtk.License.GPL_3_0)
         about.present()
 
     def on_preferences_action(self, widget, _):
-        """Callback for the app.preferences action."""
         print('app.preferences action activated')
 
     def create_action(self, name, callback, shortcuts=None):
-        """Add an application action.
-
-        Args:
-            name: the name of the action
-            callback: the function to be called when the action is
-              activated
-            shortcuts: an optional list of accelerators
-        """
         action = Gio.SimpleAction.new(name, None)
         action.connect("activate", callback)
         self.add_action(action)
@@ -80,6 +65,5 @@ class LibraryApplication(Adw.Application):
 
 
 def main(version):
-    """The application's entry point."""
     app = LibraryApplication()
     return app.run(sys.argv)

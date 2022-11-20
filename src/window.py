@@ -1,6 +1,6 @@
 # window.py
 #
-# Copyright 2022 سید حسین
+# Copyright 2022 Seyed Hosein Mousavi Fard
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,11 +20,9 @@
 from gi.repository import Adw
 from gi.repository import Gtk
 
-@Gtk.Template(resource_path='/ir/hajmousa/Library/window.ui')
+@Gtk.Template(resource_path='/ir/hajmousa/Library/ui/window.ui')
 class LibraryWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'LibraryWindow'
-
-    label = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
